@@ -11,6 +11,8 @@ namespace BehaviorialPatterns.Command
         private readonly IDeposit _depositService;
         private readonly IWithdrawl _withdrawlService;
 
+        public bool Success { get; set; }
+
         public BankAccountCommand(BankAccount account, DomainModels.Action action, BankCommandArguments bankCmdArgs,
                                     IDeposit depositService, IWithdrawl withdrawlService)
         {
@@ -23,22 +25,38 @@ namespace BehaviorialPatterns.Command
 
         public void Call()
         {
-            switch (_action) 
+            switch (_action)
             {
                 case DomainModels.Action.Deposit:
                     _depositService.Deposit(_bankAcount, _bankCommandArgs.DepositAmount);
+                    Success = true;
                     break;
                 case DomainModels.Action.WithDraw:
                     _withdrawlService.WithDrawl(_bankAcount, _bankCommandArgs.WithdrawlAmount);
+                    Success = true;
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    Success = false;
+                    break;
             }
         }
 
         public void Undo()
         {
-            throw new NotImplementedException();
+            switch (_action)
+            {
+                case DomainModels.Action.Deposit:
+                    _depositService.RollbackDeposit(_bankAcount, _bankCommandArgs.DepositAmount);
+                    Success = true;
+                    break;
+                case DomainModels.Action.WithDraw:
+                    _withdrawlService.RollbackWithDrawl(_bankAcount, _bankCommandArgs.WithdrawlAmount);
+                    Success = true;
+                    break;
+                default:
+                     Success = false;
+                     break;
+             }
         }
     }
 }

@@ -3,6 +3,7 @@ namespace BehaviorialPatterns.Command
 {
     public interface IBankCommand
     {
+        bool Success { get; set; }
         void Call();
         void Undo();
     }
