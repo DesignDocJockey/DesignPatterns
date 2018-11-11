@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DomainModels\" />
     <Folder Include="Command\" />
     <Folder Include="ChainOfResponsibility\" />
   </ItemGroup>

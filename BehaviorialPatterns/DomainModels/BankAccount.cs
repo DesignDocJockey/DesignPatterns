@@ -3,7 +3,6 @@ namespace BehaviorialPatterns.DomainModels
 {
     public class BankAccount
     {
-   
         public string AccountId { get; private set; }
         public decimal Balance { get; private set; }
 
