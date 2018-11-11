@@ -1,5 +1,6 @@
-﻿using BehaviorialPatterns.DomainModels;
+using BehaviorialPatterns.DomainModels;
 using System;
+
 namespace BehaviorialPatterns.ChainOfResponsibility
 {
     public class AuthorizationRequestHandler : IHandler
@@ -19,6 +20,6 @@ namespace BehaviorialPatterns.ChainOfResponsibility
         }
 
         public void SetNextHandler(IHandler nextHandler) => _nextRequestHandler = nextHandler;
-      
+     
     }
 }

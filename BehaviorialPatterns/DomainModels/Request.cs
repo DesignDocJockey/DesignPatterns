@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace BehaviorialPatterns.DomainModels
 {
     public class Request

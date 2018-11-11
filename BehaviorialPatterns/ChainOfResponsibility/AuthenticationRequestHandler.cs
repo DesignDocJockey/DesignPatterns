@@ -1,4 +1,4 @@
-﻿using BehaviorialPatterns.DomainModels;
+using BehaviorialPatterns.DomainModels;
 using System;
 
 namespace BehaviorialPatterns.ChainOfResponsibility
@@ -20,6 +20,6 @@ namespace BehaviorialPatterns.ChainOfResponsibility
         }
 
         public void SetNextHandler(IHandler nextHandler)  => _nextRequestHandler = nextHandler;
-      
+     
     }
 }
